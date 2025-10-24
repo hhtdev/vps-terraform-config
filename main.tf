@@ -9,16 +9,16 @@ terraform {
 
 provider "docker" {}
 
-resource "docker_image" "nginx" {
-  name         = "nginx:latest"
+resource "docker_image" "portfolio" {
+  name         = "hhtdev/hhtdev_portfolio:latest"
   keep_locally = false
 }
 
-resource "docker_container" "nginx" {
-  image = docker_image.nginx.image_id
+resource "docker_container" "portfolio" {
+  image = docker_image.portfolio.image_id
   name  = var.container_name
   ports {
-    internal = 80
+    internal = 3000
     external = 8080
   }
 }
